@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1704650334894,
+      "tag": "0000_keen_red_hulk",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1704651066351,
+      "tag": "0001_thin_vindicator",
+      "breakpoints": true
+    }
+  ]
+}
