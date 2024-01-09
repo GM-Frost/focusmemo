@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { Form } from "@/components/ui/form";
 import Link from "next/link";
 import Image from "next/image";
-
+import Logo from "../../../../public/Logo.svg";
 const LoginPage = () => {
   const router = useRouter();
   const [submitError, setSubmitError] = useState("");
@@ -35,8 +35,8 @@ const LoginPage = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full sm:justify-center sm:w-[400px] space-y-6 flex flex-col"
       >
-        <Link href={"/"} className="w-full flex justify-left items-center">
-          <Image src={} alt="FocusMemo Logo" width={50} height={50} />
+        <Link href={"/"} className="w-full flex justify-left items-center ml-2">
+          <Image src={Logo} alt="FocusMemo Logo" width={100} height={100} />
         </Link>
       </form>
     </Form>
