@@ -15,6 +15,13 @@
       "when": 1704651066351,
       "tag": "0001_thin_vindicator",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1704660270849,
+      "tag": "0002_sticky_taskmaster",
+      "breakpoints": true
     }
   ]
 }
