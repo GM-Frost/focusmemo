@@ -6,20 +6,15 @@ import Banner from "../../../public/appBanner.png";
 import Calander from "../../../public/cal.png";
 
 import { CLIENTS } from "@/lib/constants";
+import ThemeToggler from "@/lib/providers/ThemeToggler";
+
 const HomePage = () => {
   return (
     <>
-      <section
-        className=" overflow-hidden
-    px-4
-    sm:px-6
-    mt-10
-    sm:flex
-    sm:flex-col
-    gap-4
-    md:justify-center
-    md:items-center"
-      >
+      <section className=" overflow-hidden px-4 sm:px-6 mt-10 sm:flex sm:flex-col gap-4 md:justify-center md:items-center">
+        <div className="flex mx-auto w-full items-end justify-end">
+          <ThemeToggler />
+        </div>
         <TitleSection
           pill="✨ Your Workspace, perfected"
           title="All-In-One Collaboration and Productive Platform"
@@ -37,30 +32,29 @@ const HomePage = () => {
         "
         >
           <Button
-            variant="btn-secondary"
-            className=" w-full
-            rounded-[10px]
-            p-6
-            text-2xl
-            bg-background"
+            variant="secondary"
+            className=" w-full rounded-[10px]  p-6 text-2xl bg-background"
           >
-            Get Cypress Free
+            Get Focus Memo Free
           </Button>
         </div>
         <div
           className="md:mt-[-90px]
           sm:w-full
-          w-[750px]
+          w-auto
           flex
           justify-center
           items-center
           mt-[-40px]
           relative
-          sm:ml-0
-          ml-[-50px]
+        
         "
         >
-          <Image src={Banner} alt="Application Banner" />
+          <Image
+            src={Banner}
+            alt="Application Banner"
+            className="object-cover  h-auto mx-auto"
+          />
           <div
             className="bottom-0
             top-[50%]
