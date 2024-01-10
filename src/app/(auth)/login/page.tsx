@@ -7,10 +7,21 @@ import { SubmitHandler, set, useForm } from "react-hook-form";
 import * as z from "zod";
 import { FormSchema } from "@/lib/types";
 import { useRouter } from "next/navigation";
-import { Form } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../../../public/Logo.svg";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import Loader from "@/components/Loader";
+import { actionLoginUser } from "@/lib/server-actions/auth-actions";
 const LoginPage = () => {
   const router = useRouter();
   const [submitError, setSubmitError] = useState("");
@@ -24,7 +35,14 @@ const LoginPage = () => {
   const isLoading = form.formState.isSubmitting;
   const onSubmit: SubmitHandler<z.infer<typeof FormSchema>> = async (
     formData
-  ) => {};
+  ) => {
+    const { error } = actionLoginUser(formData);
+    if (error) {
+      form.reset();
+      setSubmitError(error.message);
+    }
+    router.replace("/dashboard");
+  };
 
   return (
     <Form {...form}>
@@ -38,6 +56,50 @@ const LoginPage = () => {
         <Link href={"/"} className="w-full flex justify-left items-center ml-2">
           <Image src={Logo} alt="FocusMemo Logo" width={100} height={100} />
         </Link>
+        <FormDescription className="text-foreground/60">
+          An All-in-one Productivity and Project Management App
+        </FormDescription>
+        <FormField
+          disabled={isLoading}
+          control={form.control}
+          name="email"
+          render={(field) => (
+            <FormItem>
+              <FormControl>
+                <Input type="email" placeholder="Email" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          disabled={isLoading}
+          control={form.control}
+          name="password"
+          render={(field) => (
+            <FormItem>
+              <FormControl>
+                <Input type="password" placeholder="Password" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        {submitError && <FormMessage>{submitError}</FormMessage>}
+        <Button
+          type="submit"
+          className="w-full p-6"
+          size="lg"
+          disabled={isLoading}
+        >
+          {!isLoading ? "Login" : <Loader />}
+        </Button>
+        <span className="self-container">
+          Dont have an account?{" "}
+          <Link href={"/signup"} className="text-primary">
+            Sign Up
+          </Link>
+        </span>
       </form>
     </Form>
   );

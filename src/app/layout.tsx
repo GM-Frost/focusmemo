@@ -3,9 +3,11 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import db from "@/lib/supabase/db";
 import { Outfit } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import ThemeProvider from "@/lib/providers/next-theme-provider";
+import { twMerge } from "tailwind-merge";
 
-const inter = Outfit({ subsets: ["latin"] });
+const inter = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Focus Memo",
@@ -19,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={twMerge("bg-background", inter.className)}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           {children}
         </ThemeProvider>
