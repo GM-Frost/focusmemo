@@ -11,12 +11,7 @@ import { randomUUID } from "crypto";
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
 import CustomCard from "@/components/landing-page/custom-card";
-import {
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { CardContent, CardDescription, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import Diamond from "../../../public/icons/diamond.svg";
